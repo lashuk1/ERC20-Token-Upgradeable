@@ -11,7 +11,6 @@ This project is an upgradeable ERC20 token using the UUPS proxy pattern, written
 ## Requirements
 
 - [Foundry](https://book.getfoundry.sh/getting-started/installation)
-- Node.js (optional, for installing dependencies)
 - Git
 
 ## Usage
