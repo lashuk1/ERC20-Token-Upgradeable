@@ -1,66 +1,45 @@
-## Foundry
+# MyTokenProject
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project is an upgradeable ERC20 token using the UUPS proxy pattern, written in Solidity `^0.8.28` and tested with Foundry.
 
-Foundry consists of:
+## Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- Minting and burning with access control (`MINTER_ROLE`, `BURNER_ROLE`)
+- Upgradeable using OpenZeppelin UUPS proxy
+- Written and tested using Foundry
 
-## Documentation
+## Requirements
 
-https://book.getfoundry.sh/
+- [Foundry](https://book.getfoundry.sh/getting-started/installation)
+- Node.js (optional, for installing dependencies)
+- Git
 
 ## Usage
 
 ### Build
 
-```shell
-$ forge build
+```bash
+forge build
 ```
 
-### Test
+### Run Tests
 
-```shell
-$ forge test
+```bash
+forge test -vvv
 ```
 
-### Format
+### Format Code
 
-```shell
-$ forge fmt
+```bash
+forge fmt
 ```
 
-### Gas Snapshots
+## Project Structure
 
-```shell
-$ forge snapshot
-```
+- `src/` - Contracts (`MyToken.sol`, `MyTokenV2.sol`)
+- `test/` - Test files using Foundry
+- `lib/` - External dependencies (OpenZeppelin)
 
-### Anvil
+## License
 
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+MIT
