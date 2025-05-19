@@ -11,12 +11,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 /// @notice This contract allows minting and burning by specific roles and supports upgrades
 /// @dev Inherits from ERC20Upgradeable, AccessControlUpgradeable, and UUPSUpgradeable
 
-contract MyToken is
-    Initializable,
-    ERC20Upgradeable,
-    AccessControlUpgradeable,
-    UUPSUpgradeable
-{
+contract MyToken is Initializable, ERC20Upgradeable, AccessControlUpgradeable, UUPSUpgradeable {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
@@ -24,10 +19,7 @@ contract MyToken is
     /// @param name The name of the token (e.g., "MyToken")
     /// @param symbol The symbol of the token (e.g., "MTK")
 
-    function initialize(
-        string memory name,
-        string memory symbol
-    ) public initializer {
+    function initialize(string memory name, string memory symbol) public initializer {
         __ERC20_init(name, symbol);
         __AccessControl_init();
         __UUPSUpgradeable_init();

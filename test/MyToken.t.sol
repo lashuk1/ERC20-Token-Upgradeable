@@ -7,10 +7,7 @@ import "../src/MyTokenV2.sol";
 import {ERC1967Proxy} from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
 
 interface IUpgradeable {
-    function upgradeToAndCall(
-        address newImplementation,
-        bytes calldata data
-    ) external;
+    function upgradeToAndCall(address newImplementation, bytes calldata data) external;
 }
 
 contract MyTokenTest is Test {
@@ -41,10 +38,7 @@ contract MyTokenTest is Test {
         token.grantRole(token.MINTER_ROLE(), minter);
         token.grantRole(token.BURNER_ROLE(), burner);
 
-        assertTrue(
-            token.hasRole(token.DEFAULT_ADMIN_ROLE(), admin),
-            "Admin does not have DEFAULT_ADMIN_ROLE"
-        );
+        assertTrue(token.hasRole(token.DEFAULT_ADMIN_ROLE(), admin), "Admin does not have DEFAULT_ADMIN_ROLE");
     }
 
     function testMintByMinter() public {

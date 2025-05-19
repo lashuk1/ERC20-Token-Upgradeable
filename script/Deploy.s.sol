@@ -13,15 +13,9 @@ contract DeployMyToken is Script {
 
         MyToken implementation = new MyToken();
 
-        bytes memory initData = abi.encodeCall(
-            MyToken.initialize,
-            ("MyToken", "MTK")
-        );
+        bytes memory initData = abi.encodeCall(MyToken.initialize, ("MyToken", "MTK"));
 
-        ERC1967Proxy proxy = new ERC1967Proxy(
-            address(implementation),
-            initData
-        );
+        ERC1967Proxy proxy = new ERC1967Proxy(address(implementation), initData);
 
         console.log("Proxy deployed at:", address(proxy));
         console.log("Logic (implementation) at:", address(implementation));
