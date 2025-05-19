@@ -20,6 +20,10 @@ contract MyToken is
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
+    /// @notice Initializes the ERC20 token and sets up roles and upgrade support
+    /// @param name The name of the token (e.g., "MyToken")
+    /// @param symbol The symbol of the token (e.g., "MTK")
+
     function initialize(
         string memory name,
         string memory symbol
@@ -31,13 +35,27 @@ contract MyToken is
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
+    /// @notice Mints tokens to a specific address
+    /// @dev Only callable by accounts with the MINTER_ROLE
+    /// @param to The address to receive the tokens
+    /// @param amount The number of tokens to mint
+
     function mint(address to, uint256 amount) public onlyRole(MINTER_ROLE) {
         _mint(to, amount);
     }
 
+    /// @notice Burns tokens from a specific address
+    /// @dev Only callable by accounts with the BURNER_ROLE
+    /// @param from The address whose tokens will be burned
+    /// @param amount The number of tokens to burn
+
     function burn(address from, uint256 amount) public onlyRole(BURNER_ROLE) {
         _burn(from, amount);
     }
+
+    /// @dev Authorizes contract upgrades
+    /// @param newImplementation The address of the new contract implementation
+
     function _authorizeUpgrade(address) internal override {
         require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "Caller is not admin");
     }
