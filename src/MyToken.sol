@@ -56,7 +56,7 @@ contract MyToken is
     /// @dev Authorizes contract upgrades
     /// @param newImplementation The address of the new contract implementation
 
-    function _authorizeUpgrade(address) internal override {
+    function _authorizeUpgrade(address newImplementation) internal override {
         require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "Caller is not admin");
     }
 }
